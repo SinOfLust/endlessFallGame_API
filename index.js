@@ -20,6 +20,8 @@ var root = {
   }
 };
 
+services.update('started', true)
+
 var app = express();
 app.use('/graphql', graphqlHTTP({
   schema: schema,
