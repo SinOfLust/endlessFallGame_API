@@ -6,15 +6,18 @@ const services = require('./src/services')
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type Query {
-    hello: String
+    isStarted: Boolean
   }
 `);
 
 // The root provides a resolver function for each API endpoint
 var root = {
-  hello: () => {
-    return 'Hello world!';
-  },
+  // hello: () => {
+  //   return 'Hello world!';
+  // },
+  isStarted: () => {
+    return services.isStarted()
+  }
 };
 
 var app = express();
@@ -24,6 +27,3 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 app.listen(4000);
-
-const isStarted = JSON.stringify(true)
-services.update('started', isStarted)
