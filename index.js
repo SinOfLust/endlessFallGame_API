@@ -1,20 +1,29 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const { buildSchema } = require('graphql');
+const services = require('./src/services')
 
-app.get('/', function(req, res){
-  res.sendFile('/Users/loydf/Desktop/Workspace/API/index.html');
-});
+// Construct a schema, using GraphQL schema language
+var schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
 
-io.sockets.on('connection', function(socket){
-  console.log('a user connected');
-  socket.emit('message', 'Vous êtes bien connecté !');
-});
+// The root provides a resolver function for each API endpoint
+var root = {
+  hello: () => {
+    return 'Hello world!';
+  },
+};
 
-setInterval(() => {
-  io.emit('ping', { data: (new Date())/1});
-}, 1000);
+var app = express();
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
+app.listen(4000);
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
+const isStarted = JSON.stringify(true)
+services.update('started', isStarted)
