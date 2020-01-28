@@ -8,4 +8,4 @@ const root = {
     setLevel: setLevel
 };
 
-exports.root = root
+module.exports = root

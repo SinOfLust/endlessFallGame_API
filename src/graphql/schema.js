@@ -19,4 +19,4 @@ type Mutation {
 }
 `);
 
-exports.schema = schema
+module.exports = schema
