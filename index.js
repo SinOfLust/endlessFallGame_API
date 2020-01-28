@@ -7,7 +7,7 @@ const app = express(); // our app
 
 app.use('/graphql', graphqlHTTP({ // GraphQL endpoint
   schema: schema, // with our schema
-  rootValue: root, // our root pattern
+  rootValue: root, // our root resolver
   graphiql: true, // enable graphiQL GUI
 }));
 
