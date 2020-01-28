@@ -1,5 +1,18 @@
 {
-    "main": "./index.js",
+    "name": "endless_fall_game",
+    "version": "1.0.0",
+    "description": "Endless fall game api",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "dev": "nodemon index.js"
+    },
+    "keywords": [
+      "GraphQL",
+      "Express"
+    ],
+    "author": "Loyd Fassi",
+    "license": "MIT",
     "dependencies": {
         "cors": "^2.8.5",
         "express": "^4.17.1",
