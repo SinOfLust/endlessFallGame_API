@@ -1,12 +1,7 @@
-const services = require('../services')
-
-const isStarted = () => {
-    return services.isStarted()
-}
+const { getLevelFromDB } = require('../services')
 
 const getLevel = () => {
-    return services.getLevel()
+    return getLevelFromDB()
 }
 
-exports.isStarted = isStarted;
 exports.getLevel = getLevel;

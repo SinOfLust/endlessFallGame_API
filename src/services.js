@@ -35,5 +35,5 @@ function setLevel(level) {
 
 exports.update = update
 exports.isStarted = isStarted
-exports.getLevel = getLevel
-exports.setLevel = setLevel
+exports.getLevelFromDB = getLevel
+exports.setLevelInDB = setLevel

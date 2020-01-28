@@ -1,7 +1,7 @@
-const services = require('../services')
+const { setLevelInDB } = require('../services')
 
 const setLevel = ({ level }) => {
-    services.setLevel(level)
+    setLevelInDB(level)
     return level
 }
 
