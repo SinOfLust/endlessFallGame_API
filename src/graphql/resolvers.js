@@ -30,7 +30,6 @@ function getSkins() {
   const images = fs.readdirSync('public/skins')
   let imagesUrl = []
   images.forEach((image) => {
-    console.log(`http://localhost:4000/skins/${image.toString().trim()}`)
     imagesUrl.push(`http://localhost:4000/skins/${image.toString().trim()}`)
   })
   return imagesUrl
