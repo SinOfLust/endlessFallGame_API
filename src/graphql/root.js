@@ -1,17 +1,10 @@
-const services = require('../services')
-
+const query = require('./query')
+const mutation = require('./mutations')
 // The root provides a resolver function for each API endpoint
 const root = {
-  isStarted: () => {
-    return services.isStarted()
-  },
-  getLevel: () => {
-    return services.getLevel()
-  },
-  setLevel: ({level}) => {
-    services.setLevel(level)
-    return level
-  }
+    isStarted: query.isStarted,
+    getLevel: query.getLevel,
+    setLevel: mutation.setLevel
 };
 
 exports.root = root
