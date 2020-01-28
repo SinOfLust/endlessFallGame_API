@@ -1,16 +1,5 @@
 const fs = require('fs')
-
-const update = (table, value) => {
-    fs.readFile('data.json', function (err, data) {
-        if (err) throw err;
-        const json = JSON.parse(data);
-        json[`${table}`] = value;
-        fs.writeFile("data.json", JSON.stringify(json), function (err) {
-            if (err) throw err;
-        });
-    })
-}
-
+const stream = require('stream')
 
 function isStarted() {
     const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
@@ -33,7 +22,17 @@ function setLevel(level) {
     })
 }
 
-exports.update = update
+function getSkins() {
+  const images = fs.readdirSync('public/skins')
+  let imagesUrl = []
+  images.forEach((image) => {
+    console.log(`http://localhost:4000/skins/${image.toString().trim()}`)
+    imagesUrl.push(`http://localhost:4000/skins/${image.toString().trim()}`)
+  })
+  return imagesUrl
+}
+
+exports.getSkinsFromDB = getSkins
 exports.isStarted = isStarted
 exports.getLevelFromDB = getLevel
 exports.setLevelInDB = setLevel

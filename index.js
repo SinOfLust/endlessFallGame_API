@@ -2,7 +2,6 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { schema } = require('./src/graphql/schema')
 const { root } = require('./src/graphql/root')
-
 const app = express();
 
 app.use('/graphql', graphqlHTTP({
@@ -11,4 +10,5 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
+app.use(express.static('public'));
 app.listen(4000);

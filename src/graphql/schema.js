@@ -1,8 +1,13 @@
 const { buildSchema } = require("graphql")
 
 const schema = buildSchema(`
+type File {
+    filename: String!
+    URL: String
+}
+
 type Query {
-  isStarted: Boolean
+  getSkins: [String]
   getLevel: Int
 }
 
