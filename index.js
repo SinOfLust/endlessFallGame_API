@@ -1,14 +1,16 @@
-const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const { schema } = require('./src/graphql/schema')
-const { root } = require('./src/graphql/root')
+const express = require('express'); // express framework
+const graphqlHTTP = require('express-graphql'); // graphql module for express
+const { schema } = require('./src/graphql/schema') // all of my graphQL schema
+const { root } = require('./src/graphql/root') // GraphQL root pattern
 
-const app = express();
+const app = express(); // our app
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true,
+app.use('/graphql', graphqlHTTP({ // GraphQL endpoint
+  schema: schema, // with our schema
+  rootValue: root, // our root pattern
+  graphiql: true, // enable graphiQL GUI
 }));
 
-app.listen(4000);
+app.use(express.static('public')); // set public directory to static 
+
+app.listen(4000); // listen to port 4000
