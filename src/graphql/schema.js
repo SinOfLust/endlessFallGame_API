@@ -1,5 +1,8 @@
 const { buildSchema } = require("graphql")
 
+/**
+ * Our GraphQL schema, contain all the possible query
+ */
 const schema = buildSchema(`
 type File {
     filename: String!
