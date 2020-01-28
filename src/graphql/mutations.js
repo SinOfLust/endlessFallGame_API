@@ -1,8 +1,7 @@
-const { setLevelInDB } = require('../services')
+const { setLevelInDB } = require('./resolvers');
 
-const setLevel = ({ level }) => {
-    setLevelInDB(level)
-    return level
-}
-
-exports.setLevel = setLevel;
+// GraphQL mutation to set level in DB ( here's a JSON file )
+exports.setLevel = ({ level }) => {
+  setLevelInDB(level);
+  return level;
+};

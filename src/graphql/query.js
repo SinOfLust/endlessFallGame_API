@@ -1,7 +1,11 @@
-const { getLevelFromDB } = require('../services')
+const { getLevelFromDB, getSkinsFromDB } = require('./resolvers');
 
-const getLevel = () => {
-    return getLevelFromDB()
-}
+// GraphQL query to get level from DB ( here's a JSON file)
+exports.getLevel = () => {
+  return getLevelFromDB();
+};
 
-exports.getLevel = getLevel;
+// GraphQL query to get skins from DB (here's its from public dir)
+exports.getSkins = () => {
+  return getSkinsFromDB();
+};
