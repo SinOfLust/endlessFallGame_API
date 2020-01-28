@@ -8,5 +8,7 @@
         "mongodb": "^3.5.2",
         "socket.io": "^2.3.0"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
 }

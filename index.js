@@ -1,16 +1,13 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
-const services = require('./src/services')
-const graphqlSchema = require('./src/graphql/schema')
-const root = require('./src/graphql/root')
-
-services.update('started', true)
+const { schema } = require('./src/graphql/schema')
+const { root } = require('./src/graphql/root')
 
 const app = express();
 
 app.use('/graphql', graphqlHTTP({
-  schema: graphqlSchema.schema,
-  rootValue: root.root,
+  schema: schema,
+  rootValue: root,
   graphiql: true,
 }));
 
