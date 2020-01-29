@@ -2,7 +2,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const uri =
   'mongodb+srv://adminMaster:AuDdjKB1KIZYnp1T@fallingangel-c6oh4.gcp.mongodb.net/sample_analytics?retryWrites=true&w=majority';
-const accounts = require('./collections/collections');
+const model = require('./collections/collections');
 
 /**
  * resolver to read JSON file from a GraphQL query
@@ -51,7 +51,7 @@ const databaseConnection = async () => {
   //exemple of query : SELECT products from ACCOUNTS where limit = 9000
   let datas = [];
   await model.find({ limit: 9000 }, { products: 1 }, (err, data) => {
-    datas = data.map();
+    datas = data;
   });
   return datas;
 };
