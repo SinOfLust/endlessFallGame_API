@@ -1,15 +1,7 @@
-# Guardian Angels API
+# My Endless Game API with GraphQL
 
-### Installation
-
+## Installation
 ```
-$ npm i
-```
-
-### Run server
-
-```
-$ npm run start
-    or
+$ npm install
 $ npm run dev
 ```
