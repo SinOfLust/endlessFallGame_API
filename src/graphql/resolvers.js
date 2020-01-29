@@ -8,6 +8,7 @@ const accounts = require('./collections/collections')
  */
 const getLevel = () => {
     const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
+    console.log(data.level)
     return data.level
 }
 
@@ -42,19 +43,19 @@ const getSkins = () => {
 /**
  * Open a mongoDB connection and query it
  */
-const databaseConnection = () => {
+const databaseConnection = async () => {
     mongoose.connect(uri, { useNewUrlParser: true });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', () => {
-        //exemple of query : SELECT products from ACCOUNTS where limit = 9000
-        accounts.find({limit: 9000},{products: 1}, (err, data) => {
-            console.log(data, data.length);
-        })
-    });
+    //exemple of query : SELECT products from ACCOUNTS where limit = 9000
+    let datas = []
+    await model.find({ limit: 9000 }, { products: 1 }, (err, data) => {
+        datas = data.map()
+    })
+    return datas
 }
 
-exports.DB = databaseConnection
+exports.getDataFromDB = databaseConnection
 exports.getSkinsFromDB = getSkins
 exports.getLevelFromDB = getLevel
 exports.setLevelInDB = setLevel
