@@ -1,7 +1,7 @@
 const { buildSchema } = require("graphql")
 
 /**
- * Our GraphQL schema, contain all the possible query
+ * Our GraphQL schema, contain all the possible queries
  */
 const schema = buildSchema(`
 type File {

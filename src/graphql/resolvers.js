@@ -1,9 +1,13 @@
 const fs = require('fs')
 
+const mongoose = require('mongoose');
+const uri = "mongodb+srv://adminMaster:Scarface38@fallingangel-c6oh4.gcp.mongodb.net/test?retryWrites=true&w=majority";
+
+
 /**
  * resolver to read JSON file from a GraphQL query
  */
-const getLevel= () => {
+const getLevel = () => {
     const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
     return data.level
 }
@@ -26,13 +30,23 @@ const setLevel = level => {
 /**
  * resolver to fetch files within public/skins directory from a GraphQL query
  */
-function getSkins() {
-  const images = fs.readdirSync('public/skins')
-  let imagesUrl = []
-  images.forEach((image) => {
-    imagesUrl.push(`http://localhost:4000/skins/${image.toString().trim()}`)
-  })
-  return imagesUrl
+const getSkins = () => {
+    const images = fs.readdirSync('public/skins')
+    let imagesUrl = []
+
+    images.forEach((image) => {
+        imagesUrl.push(`http://localhost:4000/skins/${image.toString().trim()}`)
+    })
+    return imagesUrl
+}
+
+const databaseConnection = () => {
+    mongoose.connect(uri, { useNewUrlParser: true });
+    const db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', () => {
+        console.log("we're connected")
+    });
 }
 
 exports.getSkinsFromDB = getSkins
