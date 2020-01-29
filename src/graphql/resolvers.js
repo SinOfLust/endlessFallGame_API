@@ -1,7 +1,6 @@
 const fs = require('fs')
-
 const mongoose = require('mongoose');
-const uri = "mongodb+srv://adminMaster:Scarface38@fallingangel-c6oh4.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://adminMaster:AuDdjKB1KIZYnp1T@fallingangel-c6oh4.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
 
 /**
@@ -49,6 +48,7 @@ const databaseConnection = () => {
     });
 }
 
+exports.DB = databaseConnection
 exports.getSkinsFromDB = getSkins
 exports.getLevelFromDB = getLevel
 exports.setLevelInDB = setLevel
