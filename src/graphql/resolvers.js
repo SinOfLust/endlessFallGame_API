@@ -1,8 +1,11 @@
 const fs = require('fs');
-const mongoose = require('mongoose');
-const uri =
-  'mongodb+srv://adminMaster:AuDdjKB1KIZYnp1T@fallingangel-c6oh4.gcp.mongodb.net/sample_analytics?retryWrites=true&w=majority';
+//const uri =
+//'mongodb+srv://adminMaster:AuDdjKB1KIZYnp1T@fallingangel-c6oh4.gcp.mongodb.net/sample_analytics?retryWrites=true&w=majority';
 const model = require('./collections/collections');
+const mongoose = require('mongoose');
+const host = process.env.DB_HOST_ATLAS;
+const password = process.env.DB_PASSWORD;
+const bdd = process.env.DB_NAME;
 
 /**
  * resolver to read JSON file from a GraphQL query
@@ -44,7 +47,7 @@ const getSkins = () => {
 /**
  * Open a mongoDB connection and query it
  */
-const databaseConnection = async () => {
+/* const databaseConnection = async () => {
   mongoose.connect(uri, { useNewUrlParser: true });
   const db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -54,6 +57,33 @@ const databaseConnection = async () => {
     datas = data;
   });
   return datas;
+}; */
+
+const databaseConnection = async () => {
+  console.log('object');
+  try {
+    const conn = await mongoose.connect(
+      (mongo_uri = `mongodb+srv://${host}:${password}@fallingangel-c6oh4.gcp.mongodb.net/${bdd}?retryWrites=true&w=majority`),
+      {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+      }
+    );
+    console.log(
+      `MongoDB connected: ${conn.connection.host}`.cyan.underline.bold
+    );
+
+    // Exemple of query : SELECT products from ACCOUNTS where limit = 9000
+    let datas = [];
+    await model.find({ limit: 9000 }, { products: 1 }, (err, data) => {
+      datas = data;
+    });
+    return datas;
+  } catch (error) {
+    console.log('connection error:', error);
+  }
 };
 
 exports.getDataFromDB = databaseConnection;

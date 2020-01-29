@@ -1,3 +1,8 @@
+// Load env vars
+require('dotenv').config();
+// Colors
+require('colors');
+
 const express = require('express');
 const graphqlHTTP = require('express-graphql'); // graphql module for express
 const schema = require('./src/graphql/schema'); // all of my graphQL schema
@@ -16,5 +21,16 @@ app.use(
   })
 );
 
-// Server
-app.listen(port, () => console.log(`Server listening on port: ${port}`));
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err, promise) => {
+  console.log(`Error: ${err.message}`.red);
+  // close server & exit process
+  server.close(() => process.exit(1));
+});
+
+const server = app.listen(port, () =>
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port: ${port}`.yellow
+      .bold
+  )
+);
