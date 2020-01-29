@@ -1,7 +1,7 @@
 const fs = require('fs')
 const mongoose = require('mongoose');
-const uri = "mongodb+srv://adminMaster:AuDdjKB1KIZYnp1T@fallingangel-c6oh4.gcp.mongodb.net/test?retryWrites=true&w=majority";
-
+const uri = "mongodb+srv://adminMaster:AuDdjKB1KIZYnp1T@fallingangel-c6oh4.gcp.mongodb.net/sample_analytics?retryWrites=true&w=majority";
+const accounts = require('./collections/collections')
 
 /**
  * resolver to read JSON file from a GraphQL query
@@ -39,12 +39,18 @@ const getSkins = () => {
     return imagesUrl
 }
 
+/**
+ * Open a mongoDB connection and query it
+ */
 const databaseConnection = () => {
     mongoose.connect(uri, { useNewUrlParser: true });
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', () => {
-        console.log("we're connected")
+        //exemple of query : SELECT products from ACCOUNTS where limit = 9000
+        accounts.find({limit: 9000},{products: 1}, (err, data) => {
+            console.log(data, data.length);
+        })
     });
 }
 
