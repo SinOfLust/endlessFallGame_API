@@ -1,7 +1,7 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql'); // graphql module for express
-const { schema } = require('./src/graphql/schema'); // all of my graphQL schema
-const { root } = require('./src/graphql/root'); // GraphQL root pattern
+const schema = require('./src/graphql/schema'); // all of my graphQL schema
+const root = require('./src/graphql/root'); // GraphQL root pattern
 const port = process.env.PORT || 4000;
 const app = express(); // app
 
