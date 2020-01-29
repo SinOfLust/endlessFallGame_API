@@ -1,17 +1,18 @@
 const { buildSchema } = require("graphql")
 
 /**
- * Our GraphQL schema, contain all the possible query
+ * Our GraphQL schema, contain all the possible queries
  */
+
 const schema = buildSchema(`
-type File {
-    filename: String!
-    URL: String
+type Document {
+    products: [String]
 }
 
 type Query {
   getSkins: [String]
   getLevel: Int
+  getDatas(products: [String]): Document
 }
 
 type Mutation {

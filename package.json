@@ -1,23 +1,23 @@
 {
-  "name": "guardianangelsapi",
-  "author": "Loyd Fassi",
-  "license": "MIT",
-  "version": "1.0.0",
-  "description": "Guardian Angels API",
-  "main": "./index.js",
-  "scripts": {
-    "start": "npx node index.js",
-    "dev": "npx nodemon index.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
-    "graphql": "^14.6.0",
-    "mongodb": "^3.5.2",
-    "socket.io": "^2.3.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
-  }
+    "name": "guardianangelsapi",
+    "author": "Loyd Fassi",
+    "license": "MIT",
+    "version": "1.0.0",
+    "description": "Guardian Angels API",
+    "main": "./index.js",
+    "scripts": {
+        "start": "npx nodemon index.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "express-graphql": "^0.9.0",
+        "graphql": "^14.6.0",
+        "mongodb": "^3.5.2",
+        "mongoose": "^5.8.10",
+        "socket.io": "^2.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
+    }
 }

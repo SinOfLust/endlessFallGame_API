@@ -1,11 +1,23 @@
-const { getLevelFromDB, getSkinsFromDB } = require('./resolvers');
+const {
+  getLevelFromDB,
+  getSkinsFromDB,
+  getDataFromDB
+} = require('./resolvers');
 
 // GraphQL query to get level from DB ( here's a JSON file)
-exports.getLevel = () => {
+const getLevel = () => {
   return getLevelFromDB();
 };
 
 // GraphQL query to get skins from DB (here's its from public dir)
-exports.getSkins = () => {
+const getSkins = () => {
   return getSkinsFromDB();
 };
+
+const getDatas = async () => {
+  return await getDataFromDB();
+};
+
+exports.getDatas = getDatas;
+exports.getLevel = getLevel;
+exports.getSkins = getSkins;
