@@ -1,23 +1,12 @@
-const { buildSchema } = require("graphql")
-
+const { makeExecutableSchema } = require('graphql-tools')
+const { resolvers } = require('./resolvers')
+const { typeDefs } = require('./typeDefs')
 /**
  * Our GraphQL schema, contain all the possible queries
  */
-
-const schema = buildSchema(`
-type Document {
-    products: [String]
-}
-
-type Query {
-  getSkins: [String]
-  getLevel: Int
-  getDatas(products: [String]): Document
-}
-
-type Mutation {
-  setLevel(level: Int): Int
-}
-`);
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
+})
 
 module.exports = schema

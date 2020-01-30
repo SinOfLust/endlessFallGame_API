@@ -3,6 +3,7 @@ const Schema = mongo.Schema;
 
 const accounts = new Schema({
     limit: Number
-});
-
-module.exports = mongo.model('accounts', accounts, 'accounts');
+})
+const objectAccounts = accounts.set('toObject', { virtuals: true })
+const collection = mongo.model('accounts', objectAccounts, 'accounts')
+module.exports = collection
