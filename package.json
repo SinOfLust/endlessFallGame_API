@@ -9,14 +9,15 @@
         "start": "npx nodemon index.js"
     },
     "dependencies": {
+        "apollo-datasource-mongodb": "^0.2.1",
+        "apollo-server": "^2.9.16",
+        "apollo-server-express": "^2.9.16",
         "cors": "^2.8.5",
         "express": "^4.17.1",
-        "express-graphql": "^0.9.0",
         "graphql": "^14.6.0",
         "graphql-tools": "^4.0.6",
         "mongodb": "^3.5.2",
-        "mongoose": "^5.8.10",
-        "socket.io": "^2.3.0"
+        "mongoose": "^5.8.10"
     },
     "devDependencies": {
         "nodemon": "^2.0.2"

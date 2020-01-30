@@ -7,7 +7,7 @@ const model = require('./collections/collections')
 const resolvers = {
     Query: {
         /**
-        * resolver to fetch files within public/skins directory from a GraphQL query
+        * resolver to fetch files URL within public/skins directory from a GraphQL query
         */
         getSkins: async () => {
             const images = fs.readdirSync('public/skins')
@@ -21,14 +21,12 @@ const resolvers = {
         /**
         * Open a mongoDB connection and query account informations with args 
         */
-        account: async (root, { _id }) => {
+        account: async (root, { _id, }) => {
             mongoose.connect(uri, { useNewUrlParser: true });
             const db = mongoose.connection;
             db.on('error', console.error.bind(console, 'connection error:'));
             //exemple of query : SELECT * from ACCOUNTS where id = args // exemple to set in query args : 5ca4bbc7a2dd94ee58162a49
             const query = await model.find({ _id: _id }).exec()
-            console.log(query); // dev purpose : return [{_id: String, limit: Int, products: [String]}]
-            
             return query
         },
         /**
