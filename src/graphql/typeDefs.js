@@ -8,7 +8,7 @@ type Account {
 type Query {
   getSkins: [String]
   getLevel: Int
-  account(_id: String): Account
+  account(_id: String): [Account]
 }
 
 type Mutation {
