@@ -34,7 +34,7 @@ client.query({
 ```
 ### with javascript fetch
 ```js
-fetch('http://192.168.1.44:4000/graphql', {
+fetch('http://192.168.x.xx:4000/graphql', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
