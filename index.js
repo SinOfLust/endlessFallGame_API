@@ -1,16 +1,24 @@
-const express = require('express'); // express framework
-const graphqlHTTP = require('express-graphql'); // graphql module for express
-const { schema } = require('./src/graphql/schema') // all of my graphQL schema
-const { root } = require('./src/graphql/root') // GraphQL root pattern
+require('dotenv').config();
 
-const app = express(); // our app
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const resolvers  = require('./src/graphql/resolvers')
+const typeDefs = require('./src/graphql/typeDefs')
+const cors = require('cors');
 
-app.use('/graphql', graphqlHTTP({ // GraphQL endpoint
-  schema: schema, // with our schema
-  rootValue: root, // our root pattern
-  graphiql: true, // enable graphiQL GUI
-}));
+process.on('unhandledRejection', (err, promise) => {
+    console.log(`Error: ${err.message}`);
+});
 
+const app = express(); // our main app
+app.use(cors()) // enable cross origin ressource sharing
 app.use(express.static('public')); // set public directory to static 
 
-app.listen(4000); // listen to port 4000
+const server = new ApolloServer({ // Apollo server for queries
+    typeDefs, resolvers
+})
+
+server.applyMiddleware({ app }); // connect our express app with the apollo server
+
+
+app.listen(process.env.PORT); // listen to port 4000
