@@ -1,19 +1,24 @@
+require('dotenv').config();
+
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { resolvers } = require('./src/graphql/resolvers')
-const { typeDefs } = require('./src/graphql/typeDefs')
+const resolvers  = require('./src/graphql/resolvers')
+const typeDefs = require('./src/graphql/typeDefs')
 const cors = require('cors');
 
-const app = express(); // our app
-const PORT = 4000;
-app.use(cors())
-app.use(express.static('public')); // set public directory to static 
-
-const server = new ApolloServer({
-    typeDefs, resolvers
+process.on('unhandledRejection', (err, promise) => {
+    console.log(`Error: ${err.message}`);
 });
 
-server.applyMiddleware({ app });
+const app = express(); // our main app
+app.use(cors()) // enable cross origin ressource sharing
+app.use(express.static('public')); // set public directory to static 
+
+const server = new ApolloServer({ // Apollo server for queries
+    typeDefs, resolvers
+})
+
+server.applyMiddleware({ app }); // connect our express app with the apollo server
 
 
-app.listen(PORT); // listen to port 4000
+app.listen(process.env.PORT); // listen to port 4000

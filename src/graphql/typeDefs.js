@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server-express');
 
-const Query = gql`
+const typeDefs = gql`
 type Account {
   _id: String
   id: String
@@ -19,4 +19,4 @@ type Mutation {
   setLevel(level: Int): Int
 }
 `
-exports.typeDefs = Query
+module.exports = typeDefs
