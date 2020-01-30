@@ -19,7 +19,7 @@ const resolvers = {
             return imagesUrl
         },
         /**
-        * Open a mongoDB connection and query it
+        * Open a mongoDB connection and query account informations with args 
         */
         account: async (root, { _id }) => {
             mongoose.connect(uri, { useNewUrlParser: true });

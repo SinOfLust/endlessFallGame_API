@@ -1,7 +1,9 @@
 const typeDefs = [`
 type Account {
   _id: String
-  limit: Int
+  id: String
+  account_id: Int
+  limit: Int!
   products: [String]
 }
 
@@ -15,5 +17,6 @@ type Mutation {
   setLevel(level: Int): Int
 }
 `]
+
 
 exports.typeDefs = typeDefs
