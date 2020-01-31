@@ -8,9 +8,16 @@ type Account {
   limit: Int!
   products: [String]
 }
+enum Category {
+  skinsCharacter
+  skinsAllie
+  skinsTrail
+  skinsTheme
+  skinsBackground
+}
 
 type Query {
-  getSkins: [String]
+  getSkins(category:Category):[String]
   getLevel: Int
   account(_id: String): [Account]
 }
