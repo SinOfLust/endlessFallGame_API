@@ -4,13 +4,13 @@
     "license": "MIT",
     "version": "1.0.0",
     "description": "Guardian Angels API",
-    "main": "./index.js",
+    "main": "./index.ts",
     "scripts": {
         "start": "npm run dev",
         "test": "jest",
         "build": "tsc",
         "lint": "tslint --project tsconfig.json --config tslint.json",
-        "dev": "ts-node-dev --respawn --transpileOnly ./index.js",
+        "dev": "ts-node-dev --respawn --transpileOnly ./index.ts",
         "prod": "tsc && node ./built/index.js",
         "debug": "tsc && node --inspect ./built/index.js"
     },
