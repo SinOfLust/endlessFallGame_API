@@ -6,7 +6,7 @@ const resolvers  = require('./src/graphql/resolvers')
 const typeDefs = require('./src/graphql/typeDefs')
 const cors = require('cors');
 
-process.on('unhandledRejection', (err, promise) => {
+process.on('unhandledRejection', (err: {message: string}, promise) => {
     console.log(`Error: ${err.message}`);
 });
 

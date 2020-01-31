@@ -7,8 +7,6 @@ const accountsSchema = new Schema({
     account_id: Number
 }).set('toObject', { virtuals: true })
 
-const accountsModel = mongo.model('accounts', accountsSchema, 'accounts')
+const accountModel = mongo.model('accounts', accountsSchema, 'accounts')
 
-module.exports = {
-    accountsModel
-}
+module.exports.accountsModel = accountModel

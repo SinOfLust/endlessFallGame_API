@@ -6,7 +6,13 @@
     "description": "Guardian Angels API",
     "main": "./index.js",
     "scripts": {
-        "start": "npx nodemon index.js"
+        "start": "npm run dev",
+        "test": "jest",
+        "build": "tsc",
+        "lint": "eslint . & echo 'lint complete'",
+        "dev": "ts-node-dev --respawn --transpileOnly ./index.ts",
+        "prod": "tsc && node ./built/index.js",
+        "debug": "tsc && node --inspect ./built/index.js"
     },
     "dependencies": {
         "apollo-datasource-mongodb": "^0.2.1",
@@ -18,9 +24,16 @@
         "graphql": "^14.6.0",
         "graphql-tools": "^4.0.6",
         "mongodb": "^3.5.2",
-        "mongoose": "^5.8.10"
+        "mongoose": "^5.8.10",
+        "typescript": "^3.7.5"
     },
     "devDependencies": {
-        "nodemon": "^2.0.2"
+        "@typescript-eslint/eslint-plugin": "^2.18.0",
+        "@typescript-eslint/parser": "^2.18.0",
+        "eslint-config-airbnb-typescript": "^6.3.1",
+        "nodemon": "^2.0.2",
+        "ts-jest": "^25.1.0",
+        "ts-node": "^8.6.2",
+        "ts-node-dev": "^1.0.0-pre.44"
     }
 }

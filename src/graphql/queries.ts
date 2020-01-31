@@ -9,9 +9,9 @@ const queries = {
     */
     getSkins: async () => {
         const images = fs.readdirSync('public/skins')
-        let imagesUrl = []
+        let imagesUrl: Array<string> = []
 
-        images.forEach((image) => {
+        images.forEach((image: string) => {
             imagesUrl.push(`http://${process.env.DOMAIN}:${process.env.PORT}/skins/${image.toString().trim()}`)
         })
         return imagesUrl
@@ -19,7 +19,7 @@ const queries = {
     /**
     * Open a mongoDB connection and query account informations with args 
     */
-    account: async (root, { _id, }) => {
+    account: async (root: any, { _id, }: {_id: string}) => {
         await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         const db = mongoose.connection;
         db.on('error', console.error.bind(console, 'connection error:'));
