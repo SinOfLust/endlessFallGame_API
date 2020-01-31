@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
 type Account {
@@ -19,4 +19,4 @@ type Mutation {
   setLevel(level: Int): Int
 }
 `
-module.exports = typeDefs
+export default typeDefs

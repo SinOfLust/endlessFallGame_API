@@ -1,13 +1,25 @@
 # Guardian Angels API
 ## Scripts
+dev
 ```npm
 npm start
 ```
-or
+debug
 ```npm
-npx nodemon index.js
+npm run debug
 ```
-
+test
+```npm
+npm run test
+```
+build
+```npm
+npm run build
+```
+lint
+```npm
+npm run lint
+```
 ## GraphQL API
 go to http://localhost:4000/graphql and start query our API or integrate it in your front end application like as following :
 ### with apollo-boost
