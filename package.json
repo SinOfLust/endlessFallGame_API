@@ -10,9 +10,9 @@
         "test": "jest",
         "build": "tsc",
         "lint": "tslint --project tsconfig.json --config tslint.json",
-        "dev": "ts-node-dev --respawn --transpileOnly ./index.ts",
-        "prod": "tsc && node ./built/index.ts",
-        "debug": "tsc && node --inspect ./built/index.ts"
+        "dev": "ts-node-dev --respawn --transpileOnly ./index.js",
+        "prod": "tsc && node ./built/index.js",
+        "debug": "tsc && node --inspect ./built/index.js"
     },
     "dependencies": {
         "apollo-server": "^2.9.16",
