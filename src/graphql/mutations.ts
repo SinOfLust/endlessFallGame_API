@@ -1,15 +1,11 @@
-const fileModule = require('fs')
+import fileModule from 'fs';
 
 const mutations = {
-    /**
-    * resolver to set data in JSON file from a GraphQL query
-    * @param {Number} level - the level to set
-    */
-    setLevel: async (root: any, args: number) => {
-        fileModule.readFile('data.json', function (err: {message: string}, data: string) {
+    setLevel: async (root: any, level: number): Promise<void> => {
+        fileModule.readFile('src/database/data.json', function (err: {message: string}, data: Buffer): void {
             if (err) throw err;
-            const json = JSON.parse(data);
-            json.level = args;
+            let json: {level: number} = JSON.parse(data as unknown as string);
+            json.level = level
             fileModule.writeFile("src/database/data.json", JSON.stringify(json), function (err: {message: string}) {
                 if (err) throw err;
             });
@@ -17,4 +13,4 @@ const mutations = {
     }
 }
 
-module.exports = mutations
+export default mutations

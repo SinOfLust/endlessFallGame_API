@@ -1,10 +1,9 @@
 require('dotenv').config();
-
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const resolvers  = require('./src/graphql/resolvers')
-const typeDefs = require('./src/graphql/typeDefs')
-const cors = require('cors');
+import express from 'express';
+import resolvers from './src/graphql/resolvers';
+import typeDefs from './src/graphql/typeDefs';
+import { ApolloServer } from 'apollo-server-express'
+import cors from 'cors';
 
 process.on('unhandledRejection', (err: {message: string}, promise) => {
     console.log(`Error: ${err.message}`);

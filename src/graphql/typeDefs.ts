@@ -19,4 +19,4 @@ type Mutation {
   setLevel(level: Int): Int
 }
 `
-module.exports = typeDefs
+export default typeDefs

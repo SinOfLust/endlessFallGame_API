@@ -28,6 +28,7 @@
         "typescript": "^3.7.5"
     },
     "devDependencies": {
+        "@types/mongoose": "^5.7.0",
         "@typescript-eslint/eslint-plugin": "^2.18.0",
         "@typescript-eslint/parser": "^2.18.0",
         "eslint-config-airbnb-typescript": "^6.3.1",
