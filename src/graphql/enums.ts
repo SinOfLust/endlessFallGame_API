@@ -1,3 +1,7 @@
 export enum Folders {
-    skinsCharacter = "skinsCharacter"
+    skinsCharacter = "skinsCharacter",
+    skinsAllies = "skinsAllies",
+    skinsBackgrounds = "skinsBackgrounds",
+    skinsThemes ="skinsThemes",
+    skinsTrails = "skinsTrails"
 }

@@ -10,10 +10,10 @@ type Account {
 }
 enum Category {
   skinsCharacter
-  skinsAllie
-  skinsTrail
-  skinsTheme
-  skinsBackground
+  skinsAllies
+  skinsTrails
+  skinsThemes
+  skinsBackgrounds
 }
 
 enum Folders {
