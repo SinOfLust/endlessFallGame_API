@@ -18,12 +18,17 @@ enum Category {
 
 type Query {
   getSkins(category:Category):[String]
+enum Folders {
+  skinsCharacter
+}
+type Query {
+  getSkins(category: Folders): [String]
   getLevel: Int
-  account(_id: String): [Account]
+  getAccounts(_id: String): [Account]
 }
 
 type Mutation {
-  setLevel(level: Int): Int
+  levelUp(level: Int): Int
 }
 `
 export default typeDefs
