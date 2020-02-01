@@ -8,15 +8,17 @@ type Account {
   limit: Int!
   products: [String]
 }
-
+enum Folders {
+  skinsCharacter
+}
 type Query {
-  getSkins: [String]
+  getSkins(category: Folders): [String]
   getLevel: Int
-  account(_id: String): [Account]
+  getAccounts(_id: String): [Account]
 }
 
 type Mutation {
-  setLevel(level: Int): Int
+  levelUp(level: Int): Int
 }
 `
 export default typeDefs
