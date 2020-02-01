@@ -8,9 +8,18 @@ type Account {
   limit: Int!
   products: [String]
 }
+enum Category {
+  skinsCharacter
+  skinsAllies
+  skinsTrails
+  skinsThemes
+  skinsBackgrounds
+}
+
 enum Folders {
   skinsCharacter
 }
+
 type Query {
   getSkins(category: Folders): [String]
   getLevel: Int
