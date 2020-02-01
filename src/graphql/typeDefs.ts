@@ -16,11 +16,10 @@ enum Category {
   skinsBackground
 }
 
-type Query {
-  getSkins(category:Category):[String]
 enum Folders {
   skinsCharacter
 }
+
 type Query {
   getSkins(category: Folders): [String]
   getLevel: Int
