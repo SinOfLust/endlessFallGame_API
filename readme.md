@@ -42,7 +42,7 @@ and finally
 npm start
 ```
 
-now go to http://localhost:4000/graphql and start query our API or integrate it in your front end application like as following :
+now go to http://localhost:4000/graphql and start query our API or integrate it in your front end application like as following 
 
 ### with apollo-boost
 ```js
@@ -70,13 +70,12 @@ client.query({query: gql`
 fetch('http://192.168.x.xx:4000/graphql', {method: 'POST', headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-    },
+      },
       body: JSON.stringify({query:`
       mutation getSkins{
         getSkins(category: "skinsCharacter")
-      }
-      `)
-    })
-    .then(r => r.json())
-    .then(data => console.log('data returned:', data));
+      }`)
+      })
+      .then(r => r.json())
+      .then(data => console.log('data returned:', data));
 ```
